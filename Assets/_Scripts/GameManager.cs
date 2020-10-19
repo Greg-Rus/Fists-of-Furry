@@ -10,11 +10,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private EnemyConfig _enemyCofnig;
     [SerializeField] private GameObject _player;
 
+    private Dictionary<Transform, EnemyController> _enemies;
+
     private float _enemySpawnTimer = 0f;
+
+    public Dictionary<Transform, EnemyController> Enemies => _enemies;
+    public Vector3 PlayerPosition => _player.transform.position;
+
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        
+        _enemies = new Dictionary<Transform, EnemyController>();
     }
 
     // Update is called once per frame
@@ -39,7 +45,9 @@ public class GameManager : MonoBehaviour
     private void SpawnEnemy()
     {
         var enemy = Instantiate(_prfabConfig.EnemyPrefab, GetEnemySpawnPosition(), Quaternion.identity);
-        enemy.GetComponent<EnemyController>().Setup(_enemyCofnig, _player.transform);
+        var enemyController = enemy.GetComponent<EnemyController>();
+        enemyController.Setup(_enemyCofnig, _player.transform);
+        Enemies.Add(enemy.transform, enemyController);
     }
 
     private Vector3 GetEnemySpawnPosition()

@@ -13,4 +13,9 @@ public static class Helpers
         var second = goal + tolerance;
         return InRange(value, Mathf.Min(first, second), Mathf.Max(first, second));
     }
+
+    public static float Sqrd(this float f)
+    {
+        return f * f;
+    }
 }

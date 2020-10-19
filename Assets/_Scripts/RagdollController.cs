@@ -6,32 +6,38 @@ public class RagdollController : MonoBehaviour
 {
     [SerializeField] private Transform _ragdolRoot;
     [SerializeField] private bool _ragdolEnabled = false;
-    private Rigidbody[] _rigidbodies;
-    private Collider[] _colliders;
-    
-     void OnEnable()
+    [SerializeField] private GameObject _baseRigidbodyAndCollider;
+    private Rigidbody[] _ragdollRigidbodies;
+    private Collider[] _ragdollColliders;
+    private Animator _animator;
+
+    void OnEnable()
      {
-         _rigidbodies = _ragdolRoot.GetComponentsInChildren<Rigidbody>();
-         _colliders = _ragdolRoot.GetComponentsInChildren<Collider>();
+         _ragdollRigidbodies = _ragdolRoot.GetComponentsInChildren<Rigidbody>();
+         _ragdollColliders = _ragdolRoot.GetComponentsInChildren<Collider>();
+         _animator = GetComponent<Animator>();
          RagdollActive(false);
      }
 
      public void RagdollActive(bool isEnabled)
      {
-         foreach (var collider in _colliders)
+         foreach (var collider in _ragdollColliders)
          {
              collider.enabled = isEnabled;
          }
 
-         foreach (var rigidbody in _rigidbodies)
+         foreach (var rigidbody in _ragdollRigidbodies)
          {
              rigidbody.isKinematic = !isEnabled;
          }
+
+         _baseRigidbodyAndCollider.SetActive(!isEnabled);
+         _animator.enabled = !isEnabled;
      }
 
      public void ApplyExplosionForce(float explosionForce, Vector3 position, float upwardsModifier)
      {
-         foreach (var rigidbody in _rigidbodies)
+         foreach (var rigidbody in _ragdollRigidbodies)
          {
              rigidbody.AddExplosionForce(explosionForce, position, 10, upwardsModifier);
          }

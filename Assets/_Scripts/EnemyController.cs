@@ -12,6 +12,7 @@ namespace _Scripts
         private EnemyAI _ai;
         private EnemyConfig _config;
         private Transform _target;
+        private Animator _animator;
 
         public void Setup(EnemyConfig config, Transform target)
         {
@@ -26,11 +27,13 @@ namespace _Scripts
             _navigation = GetComponent<NavMeshAgent>();
             _ragdollController = GetComponent<RagdollController>();
             _ai = GetComponent<EnemyAI>();
+            _animator = GetComponent<Animator>();
         }
 
         public bool IsHighlighted
         {
             set => _highlight.SetActive(value);
+            get => _highlight.activeSelf;
         }
     
         public void OnGotHit()

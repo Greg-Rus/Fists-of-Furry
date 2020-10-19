@@ -9,14 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2271048e3584dbbaaab89dc090e0c24, type: 3}
-  m_Name: GameConfig
+  m_Script: {fileID: 11500000, guid: e5e63602f96a482fb0f2c9551c319d00, type: 3}
+  m_Name: PlayerConfig
   m_EditorClassIdentifier: 
-  GroundLayers:
-    serializedVersion: 2
-    m_Bits: 512
-  EnemyLayers:
-    serializedVersion: 2
-    m_Bits: 256
-  EnemySpawnSpeed: 2
-  EnemySpawnRadius: 8
+  AttackRange: 6

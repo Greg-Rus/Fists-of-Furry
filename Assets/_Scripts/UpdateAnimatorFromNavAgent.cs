@@ -8,6 +8,17 @@ public class UpdateAnimatorFromNavAgent : MonoBehaviour
 {
     private Animator _animator;
     private NavMeshAgent _navMeshAgent;
+    private bool _isCharging;
+
+    public bool IsCharging
+    {
+        get => _isCharging;
+        set
+        {
+            _isCharging = value;
+            _animator.SetFloat(AnimatorProperties.Charge,  _isCharging ? 1f : 0f);
+        }
+    }
 
     void OnEnable()
     {

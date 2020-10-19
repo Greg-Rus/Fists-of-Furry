@@ -1,17 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &8231723755180108819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3335713893131056305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68ea406b75132094f8931f210ae1a160, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4320343018726730476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25,6 +13,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlight: {fileID: 4999618506863189672}
+--- !u!114 &8231723755180108819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3335713893131056305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ea406b75132094f8931f210ae1a160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4999618506863189672
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +232,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Character Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778029905169482429, guid: 77fc82a1f1bcca445aecaafb41287099,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051497281398790345, guid: 77fc82a1f1bcca445aecaafb41287099,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4531720912819614875, guid: 77fc82a1f1bcca445aecaafb41287099,
         type: 3}
