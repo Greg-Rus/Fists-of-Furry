@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
   AttackRange: 6
+  WalkingSpeed: 4
+  ChargingSpeed: 16

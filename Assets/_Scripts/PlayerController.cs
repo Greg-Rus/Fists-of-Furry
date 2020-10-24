@@ -8,6 +8,7 @@ using UnityEngine.AI;
 public enum CharacterStates
 {
     Walking,
+    FollowingAtDistance,
     Charging,
     Attacking,
     GettingHit,
@@ -20,17 +21,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UserInput _userInput;
     [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private TargetSelector _targetSelector;
-    private UpdateAnimatorFromNavAgent _animation;
+    private AnimationController _animation;
     public CharacterStates State = CharacterStates.Walking;
 
     private NavMeshAgent _navigation;
 
     private EnemyController _enemyInCombat;
+    private AttackType _attackInput;
+
+    private AttackSide _lastAttackSide = AttackSide.Left;
     // Start is called before the first frame update
     private void OnEnable()
     {
         _navigation = GetComponent<NavMeshAgent>();
-        _animation = GetComponent<UpdateAnimatorFromNavAgent>();
+        _animation = GetComponent<AnimationController>();
+        _animation.OnHit += HitEnemy;
+        _animation.AddAttackCallback(TransitionToWalking);
     }
 
     void Start()
@@ -68,6 +74,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && _targetSelector.SelectedTarget != null)
         {
             TransitionToCharging();
+            _attackInput = AttackType.Punch;
+        }
+        if (Input.GetMouseButtonDown(1) && _targetSelector.SelectedTarget != null)
+        {
+            TransitionToCharging();
+            _attackInput = AttackType.Kick;
         }
         
         _navigation.SetDestination(_userInput.InputDestination);
@@ -96,14 +108,24 @@ public class PlayerController : MonoBehaviour
         _navigation.ResetPath();
         _navigation.enabled = false;
         _animation.IsCharging = false;
+        _enemyInCombat.AI.OnUnderAttack();
         State = CharacterStates.Attacking;
+        
+        switch (_attackInput)
+        {
+            case AttackType.Punch: ExecutePunch();
+                break;
+            case AttackType.Kick: ExecuteKick();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        
     }
 
     private void UpdateAttacking()
     {
-        _enemyInCombat.OnDied();
-        _enemyInCombat = null;
-        TransitionToWalking();
+        //wait for animation delegate callback;
     }
 
     private void TransitionToWalking()
@@ -112,4 +134,27 @@ public class PlayerController : MonoBehaviour
         _navigation.speed = _playerConfig.WalkingSpeed;
         State = CharacterStates.Walking;
     }
+
+    private void HitEnemy()
+    {
+        _enemyInCombat.AI.OnHitConnect();
+    }
+
+    private void ExecutePunch()
+    {
+        var punchId = UnityEngine.Random.Range(1, 4);
+        var punchSide = _lastAttackSide == AttackSide.Left ? AttackSide.Right : AttackSide.Left;
+        _lastAttackSide = punchSide;
+        
+        _animation.StartPunchAnimation(punchId, punchSide);
+    }    
+    
+    private void ExecuteKick()
+    {
+        var kickId = UnityEngine.Random.Range(1, 3);
+        var punchSide = _lastAttackSide == AttackSide.Left ? AttackSide.Right : AttackSide.Left;
+        _lastAttackSide = punchSide;
+        _animation.StartKickAnimation(kickId, punchSide);
+    }
+    
 }

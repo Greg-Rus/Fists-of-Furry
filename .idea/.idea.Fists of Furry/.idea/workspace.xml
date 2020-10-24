@@ -11,26 +11,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb1ce3f3-e5dc-4db3-a823-48677f76f518" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_Prefabs/Character Player.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Prefabs/Character Player.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Config/PlayerConfig.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/TargetSelector.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Animations/RPG-Character-Animation-Controller 1.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Animations/RPG-Character-Animation-Controller 1.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/AnimationController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/AnimationController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/AttackBehaviour.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/AttackSide.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/AttackSide.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/AttackType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/AttackType.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Fists of Furry/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fists of Furry/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Fists of Furry/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fists of Furry/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Fists of Furry/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fists of Furry/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dev.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dev.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Configs/GameConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Configs/GameConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Prefabs/Character Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Prefabs/Character Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExplosiveLLC/RPG Character Animation Pack/Code/RPGCharacterAnimatorEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExplosiveLLC/RPG Character Animation Pack/Code/RPGCharacterAnimatorEvents.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Configs/PlayerConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Configs/PlayerConfig.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Prefabs/Character.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Prefabs/Character.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Config/GameConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Config/GameConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/AnimatorProperties.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/AnimatorProperties.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EnemyAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EnemyAI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EnemyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Helpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Helpers.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/RagdollController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/RagdollController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/UpdateAnimatorFromNavAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/UpdateAnimatorFromNavAgent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/UserInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/UserInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,24 +40,31 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/UserInput.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/1b/17edc84f/Component.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/EnemyController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/CharacterNavigation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/RagdollController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Config/PrefabConfig.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/UpdateAnimatorFromNavAgent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/CameraFollow.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/AnimatorProperties.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Config/GameConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Helpers.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/TargetSelector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/AttackType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/AttackSide.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Config/PlayerConfig.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/EnemyAI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ExplosiveLLC/SuperCharacterController/Scripts/PlayerMachine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9B956647-017D-4DC1-B8D3-D25EEF012467/24/f45d8f2b/Physics.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Config/EnemyConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/UserInput.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/1b/17edc84f/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/AttackBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/EnemyController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/CharacterNavigation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/UpdateAnimatorFromNavAgent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/AnimatorProperties.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ExplosiveLLC/RPG Character Animation Pack/Code/RPGCharacterAnimatorEvents.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/TargetSelector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/049BE2AF-E36F-487E-B06E-F49D51A0BAB6/9e/ece3ae29/Animator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/EnemyAI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/AnimationController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -68,17 +74,21 @@
         <option value="$PROJECT_DIR$/Assets/_Scripts/Config/PrefabConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/CharacterNavigation.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Config/EnemyConfig.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/EnemyAI.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Config/GameConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Helpers.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/TargetSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/UserInput.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Config/PlayerConfig.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/UpdateAnimatorFromNavAgent.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/RagdollController.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/EnemyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/UpdateAnimatorFromNavAgent.cs" />
+        <option value="$PROJECT_DIR$/Assets/ExplosiveLLC/RPG Character Animation Pack/Code/RPGCharacterAnimatorEvents.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/AnimatorProperties.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/AttackBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/AnimationController.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/EnemyController.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/EnemyAI.cs" />
       </list>
     </option>
   </component>
@@ -128,7 +138,7 @@
       <workItem from="1602536528225" duration="4173000" />
       <workItem from="1602948370081" duration="609000" />
       <workItem from="1603013785668" duration="11226000" />
-      <workItem from="1603143005558" duration="849000" />
+      <workItem from="1603143005558" duration="15802000" />
     </task>
     <servers />
   </component>
@@ -223,9 +233,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1603016418802" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1603023008972">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1603397975066">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1603023008972" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1603397975066" />
   </component>
 </project>

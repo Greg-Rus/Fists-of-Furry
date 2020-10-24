@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace RPGCharacterAnims
@@ -7,22 +8,11 @@ namespace RPGCharacterAnims
     public class RPGCharacterAnimatorEvents:MonoBehaviour
     {
 		[HideInInspector] public RPGCharacterController rpgCharacterController;
-
-		public void Hit()
+		
+		public void Shoot()
         {
         }
-
-        public void Shoot()
-        {
-        }
-
-        public void FootR()
-        {
-        }
-
-        public void FootL()
-        {
-        }
+		
 
         public void Land()
         {

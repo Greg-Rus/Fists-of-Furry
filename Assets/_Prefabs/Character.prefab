@@ -1074,6 +1074,7 @@ GameObject:
   - component: {fileID: 4531720912819614877}
   - component: {fileID: 2499817796086918764}
   - component: {fileID: 7372868409852921629}
+  - component: {fileID: -7199146500703236596}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -1197,6 +1198,18 @@ MonoBehaviour:
   _ragdolRoot: {fileID: 3010085460647053312}
   _ragdolEnabled: 0
   _baseRigidbodyAndCollider: {fileID: 4051497281398790345}
+--- !u!114 &-7199146500703236596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3013174038072922830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc7748cc2844af49cad29dabd080f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3013183616991833330
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace _Scripts
@@ -13,6 +14,8 @@ namespace _Scripts
         private EnemyConfig _config;
         private Transform _target;
         private Animator _animator;
+        public EnemyAI AI => _ai;
+
 
         public void Setup(EnemyConfig config, Transform target)
         {
@@ -29,26 +32,13 @@ namespace _Scripts
             _ai = GetComponent<EnemyAI>();
             _animator = GetComponent<Animator>();
         }
-
+        
         public bool IsHighlighted
         {
             set => _highlight.SetActive(value);
             get => _highlight.activeSelf;
         }
-    
-        public void OnGotHit()
-        {
         
-        }
 
-        public void OnDied()
-        {
-            _navigation.enabled = false;
-            _ai.enabled = false;
-            _ragdollController.RagdollActive(true);
-            _ragdollController.ApplyExplosionForce(_config.RagdollExplosionForce, _target.position, _config.RagdollUpwardsModifier);
-        
-            Destroy(gameObject, 5f);
-        }
     }
 }
