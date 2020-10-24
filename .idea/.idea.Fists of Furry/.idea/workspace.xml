@@ -11,25 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb1ce3f3-e5dc-4db3-a823-48677f76f518" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_Animations/RPG-Character-Animation-Controller 1.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Animations/RPG-Character-Animation-Controller 1.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/AnimationController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/AnimationController.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/AttackBehaviour.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/AttackSide.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/AttackSide.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/AttackType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/AttackType.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Fists of Furry/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fists of Furry/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Fists of Furry/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fists of Furry/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExplosiveLLC/RPG Character Animation Pack/Code/RPGCharacterAnimatorEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExplosiveLLC/RPG Character Animation Pack/Code/RPGCharacterAnimatorEvents.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Configs/PlayerConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Configs/PlayerConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Prefabs/Character.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Prefabs/Character.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/AnimatorProperties.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/AnimatorProperties.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EnemyAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EnemyAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EnemyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/UpdateAnimatorFromNavAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/UpdateAnimatorFromNavAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Config/PlayerConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Config/PlayerConfig.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +62,6 @@
         <option value="$PROJECT_DIR$/Assets/_Scripts/Helpers.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/TargetSelector.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/UserInput.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/Config/PlayerConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/RagdollController.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/UpdateAnimatorFromNavAgent.cs" />
         <option value="$PROJECT_DIR$/Assets/ExplosiveLLC/RPG Character Animation Pack/Code/RPGCharacterAnimatorEvents.cs" />
@@ -89,6 +71,7 @@
         <option value="$PROJECT_DIR$/Assets/_Scripts/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/EnemyController.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/EnemyAI.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/Config/PlayerConfig.cs" />
       </list>
     </option>
   </component>
@@ -138,7 +121,7 @@
       <workItem from="1602536528225" duration="4173000" />
       <workItem from="1602948370081" duration="609000" />
       <workItem from="1603013785668" duration="11226000" />
-      <workItem from="1603143005558" duration="15802000" />
+      <workItem from="1603143005558" duration="16821000" />
     </task>
     <servers />
   </component>
