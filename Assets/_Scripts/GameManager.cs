@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using _Scripts;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+#pragma warning disable 649
     [SerializeField] private GameConfig _gameConfig;
     [SerializeField] private PrefabConfig _prfabConfig;
     [SerializeField] private EnemyConfig _enemyCofnig;
     [SerializeField] private GameObject _player;
+#pragma warning restore 649
 
     private Dictionary<Transform, EnemyController> _enemies;
 
@@ -46,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         var enemy = Instantiate(_prfabConfig.EnemyPrefab, GetEnemySpawnPosition(), Quaternion.identity);
         var enemyController = enemy.GetComponent<EnemyController>();
-        enemyController.Setup(_enemyCofnig, _player.transform);
+        enemyController.Setup(_enemyCofnig, _player.transform, GetHitOrder(GetEnemyHp()));
         Enemies.Add(enemy.transform, enemyController);
     }
 
@@ -56,4 +59,35 @@ public class GameManager : MonoBehaviour
         var offset = new Vector3(randomInCircle.x, 0f, randomInCircle.y) * _gameConfig.EnemySpawnRadius;
         return _player.transform.position + offset;
     }
+
+    private int GetEnemyHp()
+    {
+        var roll = UnityEngine.Random.value;
+        var hpMapping = _enemyCofnig.HpProbabilityMappings.First(map => roll <= map.Range);
+        return hpMapping.Hp;
+    }
+
+    private HitTypes[] GetHitOrder(int hp)
+    {
+        var hitOrder = new HitTypes[hp];
+        for (int i = 0; i < hp; i++)
+        {
+            hitOrder[i] = GetRandomHitType();
+        }
+
+        return hitOrder;
+    }
+
+    private HitTypes GetRandomHitType()
+    {
+        var roll = UnityEngine.Random.Range(0, 3);
+        return (HitTypes) roll;
+    }
+}
+
+public enum HitTypes
+{
+    Any = 0,
+    Punch = 1,
+    Kick = 2
 }

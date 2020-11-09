@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using _Scripts;
+using _Scripts.FSM_System;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,7 +12,9 @@ public enum CharacterStates
     Walking,
     FollowingAtDistance,
     Charging,
+    TiedInCombat,
     Attacking,
+    WindingDownFromAttack,
     GettingHit,
     Ragdolling,
     Dead
@@ -18,143 +22,91 @@ public enum CharacterStates
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private UserInput _userInput;
+#pragma warning disable 649
     [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private TargetSelector _targetSelector;
+    [SerializeField] private UserInput _userInput;
+#pragma warning restore 649
     private AnimationController _animation;
     public CharacterStates State = CharacterStates.Walking;
 
     private NavMeshAgent _navigation;
-
-    private EnemyController _enemyInCombat;
-    private AttackType _attackInput;
-
-    private AttackSide _lastAttackSide = AttackSide.Left;
+    
+    [CanBeNull] private FSMSystem _fsm;
     // Start is called before the first frame update
     private void OnEnable()
     {
         _navigation = GetComponent<NavMeshAgent>();
         _animation = GetComponent<AnimationController>();
-        _animation.OnHit += HitEnemy;
-        _animation.AddAttackCallback(TransitionToWalking);
-    }
-
-    void Start()
-    {
+        _animation.OnHit += OnHitEnemyCallback;
+        _animation.AddAttackCompletedCallback(OnAttackCompetedCallback);
         
-    }
+        _fsm = new FSMSystem();
+        var walkingState = new WalkingState(_fsm, _navigation, _userInput, _targetSelector, _playerConfig, _animation);
+        walkingState.AddTransition(Transition.ToCharging, StateID.Charging);
+        
+        var chargingState = new ChargingState(_fsm, _navigation, this, _playerConfig, _animation, _targetSelector);
+        chargingState.AddTransition(Transition.ToTiedInCombat, StateID.TiedInCombat);
 
+        var punchingState = new PunchingState(_fsm, _targetSelector, _animation, _userInput, _playerConfig, _navigation, transform);
+        punchingState.AddTransition(Transition.ToWindingDownFromAttack, StateID.WindingDownFromAttack);
+        
+        var kickingState = new KickingState(_fsm, _targetSelector, _animation, _userInput, _playerConfig, _navigation, transform);
+        kickingState.AddTransition(Transition.ToWindingDownFromAttack, StateID.WindingDownFromAttack);
+
+        var tiedInCombatState = new TiedInCombatState(_fsm, _userInput, _targetSelector, _navigation);
+        tiedInCombatState.AddTransition(Transition.ToPunching, StateID.Punching);
+        tiedInCombatState.AddTransition(Transition.ToKicking, StateID.Kicking);
+        //tiedInCombatState.AddTransition(Transition.ToCharging, StateID.Charging);
+
+        var windingDownState = new WindingDownFromAttackState(_fsm, _targetSelector, _userInput, _animation, _playerConfig);
+        windingDownState.AddTransition(Transition.ToTiedInCombat, StateID.TiedInCombat); //no input
+        windingDownState.AddTransition(Transition.ToWalking, StateID.Walking); //no input, enemy dead
+        windingDownState.AddTransition(Transition.ToPunching, StateID.Punching); //new input enemy not dead
+        windingDownState.AddTransition(Transition.ToKicking, StateID.Kicking); //new input enemy not dead
+        windingDownState.AddTransition(Transition.ToCharging, StateID.Charging); //new input enemy dead
+        
+        _fsm.AddState(walkingState);
+        _fsm.AddState(chargingState);
+        _fsm.AddState(punchingState);
+        _fsm.AddState(kickingState);
+        _fsm.AddState(tiedInCombatState);
+        _fsm.AddState(windingDownState);
+    }
+    
     // Update is called once per frame
     void Update()
     {
-        switch (State)
-        {
-            case CharacterStates.Walking:
-                UpdateWalking();
-                break;
-            case CharacterStates.Charging:
-                UpdateCharging();
-                break;
-            case CharacterStates.Attacking:
-                UpdateAttacking();
-                break;
-            case CharacterStates.GettingHit:
-                break;
-            case CharacterStates.Ragdolling:
-                break;
-            case CharacterStates.Dead:
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-    }
-
-    private void UpdateWalking()
-    {
-        if (Input.GetMouseButtonDown(0) && _targetSelector.SelectedTarget != null)
-        {
-            TransitionToCharging();
-            _attackInput = AttackType.Punch;
-        }
-        if (Input.GetMouseButtonDown(1) && _targetSelector.SelectedTarget != null)
-        {
-            TransitionToCharging();
-            _attackInput = AttackType.Kick;
-        }
-        
-        _navigation.SetDestination(_userInput.InputDestination);
-    }
-
-    private void TransitionToCharging()
-    {
-        _navigation.speed = _playerConfig.ChargingSpeed;
-        _animation.IsCharging = true;
-        _enemyInCombat = _targetSelector.SelectedTarget;
-        State = CharacterStates.Charging;
-    }
-
-    private void UpdateCharging()
-    {
-        _navigation.SetDestination(_enemyInCombat.transform.position);
-        
-        if (_navigation.remainingDistance <= 1.1f)
-        {
-            TransitionToAttacking();
-        }
-    }
-
-    private void TransitionToAttacking()
-    {
-        _navigation.ResetPath();
-        _navigation.enabled = false;
-        _animation.IsCharging = false;
-        _enemyInCombat.AI.OnUnderAttack();
-        State = CharacterStates.Attacking;
-        
-        switch (_attackInput)
-        {
-            case AttackType.Punch: ExecutePunch();
-                break;
-            case AttackType.Kick: ExecuteKick();
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-        
-    }
-
-    private void UpdateAttacking()
-    {
-        //wait for animation delegate callback;
-    }
-
-    private void TransitionToWalking()
-    {
-        _navigation.enabled = true;
-        _navigation.speed = _playerConfig.WalkingSpeed;
-        State = CharacterStates.Walking;
-    }
-
-    private void HitEnemy()
-    {
-        _enemyInCombat.AI.OnHitConnect();
-    }
-
-    private void ExecutePunch()
-    {
-        var punchId = UnityEngine.Random.Range(1, 4);
-        var punchSide = _lastAttackSide == AttackSide.Left ? AttackSide.Right : AttackSide.Left;
-        _lastAttackSide = punchSide;
-        
-        _animation.StartPunchAnimation(punchId, punchSide);
-    }    
-    
-    private void ExecuteKick()
-    {
-        var kickId = UnityEngine.Random.Range(1, 3);
-        var punchSide = _lastAttackSide == AttackSide.Left ? AttackSide.Right : AttackSide.Left;
-        _lastAttackSide = punchSide;
-        _animation.StartKickAnimation(kickId, punchSide);
+        _fsm.CurrentState.Reason();
+        _fsm.CurrentState.Act();
     }
     
+    #region Callback
+
+    private void OnAttackCompetedCallback()
+    {
+        if (_targetSelector.EnemyCurrentlyInCombat == null)
+        {
+            _fsm.PerformTransition(Transition.ToWalking);
+        }
+        else if(_fsm.CurrentStateID == StateID.WindingDownFromAttack)
+        {
+            _fsm.PerformTransition(Transition.ToTiedInCombat);
+        }
+    }
+    
+    private void OnHitEnemyCallback()
+    {
+        var hitType = _fsm.CurrentStateID == StateID.Punching ? HitTypes.Punch : HitTypes.Kick;
+        _targetSelector.EnemyCurrentlyInCombat.AI.OnHitConnect(hitType);
+        if (_targetSelector.EnemyCurrentlyInCombat.AI.State == CharacterStates.Ragdolling ||
+            _targetSelector.EnemyCurrentlyInCombat.AI.State == CharacterStates.Dead)
+        {
+            _targetSelector.EnemyCurrentlyInCombat = null;
+        }
+        
+        _fsm.PerformTransition(Transition.ToWindingDownFromAttack);
+    }
+
+    #endregion
 }

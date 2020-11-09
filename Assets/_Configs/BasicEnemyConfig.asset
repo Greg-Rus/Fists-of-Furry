@@ -17,3 +17,10 @@ MonoBehaviour:
   RagdollExplosionForce: 1000
   RagdollUpwardsModifier: 10
   DestroyTimer: 5
+  HpProbabilityMappings:
+  - Hp: 1
+    Range: 0.6
+  - Hp: 2
+    Range: 0.9
+  - Hp: 3
+    Range: 1

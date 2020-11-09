@@ -9,19 +9,29 @@ public class AnimationController : MonoBehaviour
     
     private Animator _animator;
     private AttackBehaviour[] _attackBehaviours;
+    private HitRecoilBehaviour[] _hitRecoilBehaviours;
 
     private void OnEnable()
     {
         _animator = GetComponent<Animator>();
         _attackBehaviours = _animator.GetBehaviours<AttackBehaviour>();
+        _hitRecoilBehaviours = _animator.GetBehaviours<HitRecoilBehaviour>();
 
     }
 
-    public void AddAttackCallback(Action callback)
+    public void AddAttackCompletedCallback(Action callback)
     {
         foreach (var behaviour in _attackBehaviours)
         {
             behaviour.AttackCompletedDelegate += callback.Invoke;
+        }
+    }   
+    
+    public void AddHitRecoilCallback(Action callback)
+    {
+        foreach (var behaviour in _hitRecoilBehaviours)
+        {
+            behaviour.HitRecoilCompletedDelegate += callback.Invoke;
         }
     }
 
@@ -43,6 +53,22 @@ public class AnimationController : MonoBehaviour
         _animator.SetInteger(AnimatorProperties.KickNumber, animationIndex);
         _animator.SetInteger(AnimatorProperties.AttackSide, (int)attackSide);
         _animator.SetTrigger(AnimatorProperties.KickTrigger);
+    }
+
+    public void StartGotHitAnimation(int animationIndex)
+    {
+        _animator.SetInteger(AnimatorProperties.HitDirection, animationIndex);
+        _animator.SetTrigger(AnimatorProperties.GetHitTrigger);
+    }
+
+    public float AnimationSpeed
+    {
+        set => _animator.speed = value;
+    }
+
+    public bool ApplyRootMotion
+    {
+        set => _animator.applyRootMotion = value;
     }
     
     public void Hit()

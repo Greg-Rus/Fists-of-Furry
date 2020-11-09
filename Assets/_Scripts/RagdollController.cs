@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class RagdollController : MonoBehaviour
 {
+#pragma warning disable 649
     [SerializeField] private Transform _ragdolRoot;
-    [SerializeField] private bool _ragdolEnabled = false;
     [SerializeField] private GameObject _baseRigidbodyAndCollider;
+#pragma warning restore 649
     private Rigidbody[] _ragdollRigidbodies;
     private Collider[] _ragdollColliders;
     private Animator _animator;

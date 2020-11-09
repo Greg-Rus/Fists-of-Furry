@@ -10,17 +10,7 @@ public class UpdateAnimatorFromNavAgent : MonoBehaviour
     private Animator _animator;
     private NavMeshAgent _navMeshAgent;
     private bool _isCharging;
-
-    public bool IsCharging
-    {
-        get => _isCharging;
-        set
-        {
-            _isCharging = value;
-            _animator.SetFloat(AnimatorProperties.Charge,  _isCharging ? 1f : 0f);
-        }
-    }
-
+    
     void OnEnable()
     {
         _animator = GetComponent<Animator>();
@@ -34,6 +24,12 @@ public class UpdateAnimatorFromNavAgent : MonoBehaviour
             var relativeVelocity = transform.InverseTransformDirection(_navMeshAgent.velocity);
             _animator.SetFloat(AnimatorProperties.VeloctyX, relativeVelocity.x);
             _animator.SetFloat(AnimatorProperties.VeloctyZ, relativeVelocity.z);
+        }
+
+        if (_navMeshAgent.enabled == false)
+        {
+            _animator.SetFloat(AnimatorProperties.VeloctyX, 0f);
+            _animator.SetFloat(AnimatorProperties.VeloctyZ, 0f);
         }
     }
 }

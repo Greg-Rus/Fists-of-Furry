@@ -10,4 +10,6 @@ public static class AnimatorProperties
     public static readonly int PunchTrigger = Animator.StringToHash("Punch Trigger");
     public static readonly int KickNumber = Animator.StringToHash("Kick Number");
     public static readonly int KickTrigger = Animator.StringToHash("Kick Trigger");
+    public static readonly int GetHitTrigger = Animator.StringToHash("Get Hit Trigger");
+    public static readonly int HitDirection = Animator.StringToHash("Hit Direction");
 }

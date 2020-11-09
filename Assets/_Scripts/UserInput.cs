@@ -2,17 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
+using UniRx;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class UserInput : MonoBehaviour
 {
+#pragma warning disable 649
     [SerializeField] private Camera _mainCamera; 
-    [SerializeField] private NavMeshAgent _navigation; 
     [SerializeField] private TargetSelector _targetSelector; 
     [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private GameConfig _gameConfig;
+#pragma warning restore 649
     public Vector3 InputDestination { get; private set; }
+    public AttackType LastAttackInput;
 
     // Update is called once per frame
     void Update()
@@ -31,5 +35,15 @@ public class UserInput : MonoBehaviour
         }
         
         InputDestination = hit.point;
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            LastAttackInput = AttackType.Punch;
+        }
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            LastAttackInput = AttackType.Kick;
+        }
     }
 }

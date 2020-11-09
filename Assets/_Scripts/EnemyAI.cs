@@ -15,19 +15,22 @@ namespace _Scripts
         private AnimationController _animationController;
         public CharacterStates State = CharacterStates.FollowingAtDistance;
         private float _ragdollTimer = 0f;
+        private EnemyController _controller;
     
-        public void Setup(Transform target, EnemyConfig config)
+        public void Setup(Transform target, EnemyConfig config, EnemyController controller)
         {
             _target = target;
             _config = config;
+            _navigation.speed = _config.WalkingSpeed;
+            _controller = controller;
         }
-        void Start()
+        void OnEnable()
         {
             _navigation = GetComponent<NavMeshAgent>();
-            _navigation.speed = _config.WalkingSpeed;
             _navigation.updateRotation = false;
 
             _animationController = GetComponent<AnimationController>();
+            _animationController.AddHitRecoilCallback(OnHitRecoilEndedCallback);
 
             _ragdollController = GetComponent<RagdollController>();
             _ragdollController.RagdollActive(false);
@@ -42,6 +45,8 @@ namespace _Scripts
                 case CharacterStates.GettingHit : UpdateGettingHit();
                     break; 
                 case CharacterStates.Ragdolling : UpdateRagdolling();
+                    break;
+                case CharacterStates.TiedInCombat : UpdateTiedInCombat();
                     break;
             }
         }
@@ -59,12 +64,24 @@ namespace _Scripts
 
         public void OnUnderAttack()
         {
-            TransitionToGettingHit();
+            TransitionToTiedInCombat();
         }
 
-        public void OnHitConnect()
+        public void OnHitConnect(HitTypes hitType)
         {
-            TransitionToRagdolling();
+            _controller.RegisterHit(hitType);
+            if(_controller.IsDead) TransitionToRagdolling();
+            else
+            {
+                var hitAnimationIndex = UnityEngine.Random.Range(1, 4);
+                _animationController.StartGotHitAnimation(hitAnimationIndex);
+                TransitionToGettingHit();
+            }
+        }
+
+        private void OnHitRecoilEndedCallback()
+        {
+            TransitionToTiedInCombat();
         }
         
         private void TransitionToFollowAtDistance()
@@ -109,6 +126,17 @@ namespace _Scripts
         {
             State = CharacterStates.Dead;
             Destroy(gameObject, 2f);
+        }
+
+        private void TransitionToTiedInCombat()
+        {
+            _navigation.enabled = false;
+            State = CharacterStates.TiedInCombat;
+        }
+
+        private void UpdateTiedInCombat()
+        {
+            //Timer to execute attack
         }
     }
 }

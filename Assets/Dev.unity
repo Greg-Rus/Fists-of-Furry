@@ -149,6 +149,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5684601171497509807, guid: f64fdf97db5fa8946bbb2d27d25a8fdf,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 41680dad0f0243748b4e228f49a2e3c4, type: 2}
     - target: {fileID: 5696533570792876141, guid: f64fdf97db5fa8946bbb2d27d25a8fdf,
         type: 3}
       propertyPath: m_Name
@@ -208,6 +213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6358307396382887480, guid: f64fdf97db5fa8946bbb2d27d25a8fdf,
+        type: 3}
+      propertyPath: m_Acceleration
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f64fdf97db5fa8946bbb2d27d25a8fdf, type: 3}
@@ -329,7 +339,7 @@ GameObject:
   - component: {fileID: 374549585}
   - component: {fileID: 374549586}
   m_Layer: 0
-  m_Name: GemManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -348,10 +358,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 1175365719}
-  _navigation: {fileID: 0}
   _targetSelector: {fileID: 374549586}
   _playerConfig: {fileID: 11400000, guid: f426a987b81161344bd55af1c86386b1, type: 2}
   _gameConfig: {fileID: 11400000, guid: bcfebdf2883f7d440b1db47bdb74cae3, type: 2}
+  LastAttackInput: 0
 --- !u!4 &374549584
 Transform:
   m_ObjectHideFlags: 0
@@ -396,6 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameManager: {fileID: 374549585}
   _selectedTarget: {fileID: 0}
+  _enemyCurrentlyInCombat: {fileID: 0}
   _playerConfig: {fileID: 11400000, guid: f426a987b81161344bd55af1c86386b1, type: 2}
   _gameConfig: {fileID: 11400000, guid: bcfebdf2883f7d440b1db47bdb74cae3, type: 2}
 --- !u!1 &523711287

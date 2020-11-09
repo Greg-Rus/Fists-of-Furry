@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using _Scripts;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class TargetSelector : MonoBehaviour
 {
-    public GameManager _gameManager;
-    public EnemyController _selectedTarget = null;
-    public PlayerConfig _playerConfig;
-    public GameConfig _gameConfig;
-
+#pragma warning disable 649
+    [SerializeField] private GameManager _gameManager;
+    [SerializeField] private EnemyController _selectedTarget = null;
+    [SerializeField] private EnemyController _enemyCurrentlyInCombat = null;
+    [SerializeField] public PlayerConfig _playerConfig;
+    [SerializeField] public GameConfig _gameConfig;
+#pragma warning restore 649
     public EnemyController SelectedTarget
     {
         get => _selectedTarget;
@@ -22,13 +25,17 @@ public class TargetSelector : MonoBehaviour
         }
     }
 
+    public EnemyController EnemyCurrentlyInCombat
+    {
+        get => _enemyCurrentlyInCombat;
+        set => _enemyCurrentlyInCombat = value;
+    }
+
     // Update is called once per frame
     public void SelectTarget(Transform target)
     {
         if (target == null) return;
         
-        var sqrDistanceToPlayer = (target.position - _gameManager.PlayerPosition).sqrMagnitude;
-        if(sqrDistanceToPlayer > _playerConfig.AttackRange.Sqrd());
         SelectedTarget = _gameManager.Enemies[target];
     }
     
