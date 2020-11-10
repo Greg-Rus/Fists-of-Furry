@@ -14,12 +14,13 @@ public class UserInput : MonoBehaviour
     [SerializeField] private TargetSelector _targetSelector; 
     [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private GameConfig _gameConfig;
+    
 #pragma warning restore 649
     public Vector3 InputDestination { get; private set; }
     public AttackType LastAttackInput;
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
 

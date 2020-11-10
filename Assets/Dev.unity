@@ -219,6 +219,11 @@ PrefabInstance:
       propertyPath: m_Acceleration
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 6358307396382887480, guid: f64fdf97db5fa8946bbb2d27d25a8fdf,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f64fdf97db5fa8946bbb2d27d25a8fdf, type: 3}
 --- !u!1 &159174702
@@ -631,4 +636,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 314995149}
   OffsetFromTarget: {x: 0, y: 6, z: -9}
+  PositionDamping: 2
   Camera: {fileID: 1175365719}

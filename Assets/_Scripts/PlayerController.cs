@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         var walkingState = new WalkingState(_fsm, _navigation, _userInput, _targetSelector, _playerConfig, _animation);
         walkingState.AddTransition(Transition.ToCharging, StateID.Charging);
         
-        var chargingState = new ChargingState(_fsm, _navigation, this, _playerConfig, _animation, _targetSelector);
+        var chargingState = new ChargingState(_fsm, _navigation, this, _playerConfig, _animation, _targetSelector, transform);
         chargingState.AddTransition(Transition.ToTiedInCombat, StateID.TiedInCombat);
 
         var punchingState = new PunchingState(_fsm, _targetSelector, _animation, _userInput, _playerConfig, _navigation, transform);
@@ -57,7 +57,6 @@ public class PlayerController : MonoBehaviour
         var tiedInCombatState = new TiedInCombatState(_fsm, _userInput, _targetSelector, _navigation);
         tiedInCombatState.AddTransition(Transition.ToPunching, StateID.Punching);
         tiedInCombatState.AddTransition(Transition.ToKicking, StateID.Kicking);
-        //tiedInCombatState.AddTransition(Transition.ToCharging, StateID.Charging);
 
         var windingDownState = new WindingDownFromAttackState(_fsm, _targetSelector, _userInput, _animation, _playerConfig);
         windingDownState.AddTransition(Transition.ToTiedInCombat, StateID.TiedInCombat); //no input
@@ -77,6 +76,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(_fsm.CurrentState);
         _fsm.CurrentState.Reason();
         _fsm.CurrentState.Act();
     }

@@ -1,5 +1,6 @@
 ﻿using _Scripts.FSM_System;
 using UniRx;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class ChargingState : FSMState
@@ -10,7 +11,11 @@ public class ChargingState : FSMState
     private readonly PlayerConfig _playerConfig;
     private readonly AnimationController _animation;
     private TargetSelector _targetSelector;
-    public ChargingState(FSMSystem fsm, NavMeshAgent navigation, PlayerController controller, PlayerConfig playerConfig, AnimationController animation, TargetSelector targetSelector)
+    private readonly Transform _playerTransform;
+    private bool _pathSet;
+
+    public ChargingState(FSMSystem fsm, NavMeshAgent navigation, PlayerController controller, PlayerConfig playerConfig, 
+        AnimationController animation, TargetSelector targetSelector, Transform playerTransform)
     {
         _fsm = fsm;
         _navigation = navigation;
@@ -18,12 +23,13 @@ public class ChargingState : FSMState
         _playerConfig = playerConfig;
         _animation = animation;
         _targetSelector = targetSelector;
+        _playerTransform = playerTransform;
         stateID = StateID.Charging;
     }
 
     public override void Reason()
     {
-        if (_navigation.remainingDistance <= 1.1f)
+        if ((_targetSelector.EnemyCurrentlyInCombat.transform.position - _playerTransform.position).sqrMagnitude <= 0.2f)
         {
             _fsm.PerformTransition(Transition.ToTiedInCombat);
         }
@@ -38,14 +44,19 @@ public class ChargingState : FSMState
     {
         _navigation.enabled = true;
         _navigation.speed = _playerConfig.ChargingSpeed;
+        _navigation.acceleration = _playerConfig.ChargingAcceleration;
         _animation.IsCharging = true;
         _animation.ApplyRootMotion = false;
         _targetSelector.EnemyCurrentlyInCombat = _targetSelector.SelectedTarget;
+        _targetSelector.EnemyCurrentlyInCombat.AI.TransitionToTiedInCombat();
+        
+        if(_playerConfig.InstantChargeCompletion) _fsm.PerformTransition(Transition.ToTiedInCombat);
     }
 
     public override void DoBeforeLeaving()
     {
         _animation.IsCharging = false;
-        _navigation.speed = _playerConfig.WalkingSpeed;
+        _navigation.ResetPath();
+        _navigation.velocity = Vector3.zero;
     }
 }

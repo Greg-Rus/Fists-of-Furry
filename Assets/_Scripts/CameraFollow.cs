@@ -6,6 +6,7 @@ public class CameraFollow : MonoBehaviour
     public Transform Target;
 
     public Vector3 OffsetFromTarget;
+    public float PositionDamping;
 
     public Camera Camera;
     // Start is called before the first frame update
@@ -19,6 +20,7 @@ public class CameraFollow : MonoBehaviour
     {
         if(Target == null) return;
         
-        transform.position = Target.position + OffsetFromTarget;
+        var desiredPosition = Target.position + OffsetFromTarget;
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, PositionDamping * Time.smoothDeltaTime);
     }
 }

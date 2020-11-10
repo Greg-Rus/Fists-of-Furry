@@ -13,6 +13,7 @@ public class TargetSelector : MonoBehaviour
     [SerializeField] private EnemyController _enemyCurrentlyInCombat = null;
     [SerializeField] public PlayerConfig _playerConfig;
     [SerializeField] public GameConfig _gameConfig;
+
 #pragma warning restore 649
     public EnemyController SelectedTarget
     {
@@ -41,7 +42,7 @@ public class TargetSelector : MonoBehaviour
     
     public void SelectNearestTarget(Vector3 position)
     {
-        var collidersInRange = Physics.OverlapSphere(position, _playerConfig.AttackRange, _gameConfig.EnemyLayers);
+        var collidersInRange = Physics.OverlapSphere(_gameManager.PlayerPosition, _playerConfig.AttackRange, _gameConfig.EnemyLayers);
         if (collidersInRange.Length == 0)
         {
             SelectedTarget = null;
@@ -49,7 +50,7 @@ public class TargetSelector : MonoBehaviour
         }
         
         var closestEnemy = collidersInRange
-            .OrderBy(c => (c.transform.position - _gameManager.PlayerPosition).sqrMagnitude)
+            .OrderBy(c => (c.transform.position - position).sqrMagnitude)
             .FirstOrDefault();
         SelectTarget(closestEnemy.transform.root);
     }

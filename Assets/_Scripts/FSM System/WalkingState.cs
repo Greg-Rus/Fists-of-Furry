@@ -59,6 +59,7 @@ public class WalkingState : FSMState
     {
         _navigation.enabled = true;
         _navigation.speed = _playerConfig.WalkingSpeed;
+        _navigation.acceleration = _playerConfig.WalkingAcceleration;
         _animation.AnimationSpeed = _playerConfig.DefaultAnimationSpeed;
         _animation.ApplyRootMotion = false;
     }

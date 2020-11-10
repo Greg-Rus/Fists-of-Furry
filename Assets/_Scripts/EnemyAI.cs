@@ -128,7 +128,7 @@ namespace _Scripts
             Destroy(gameObject, 2f);
         }
 
-        private void TransitionToTiedInCombat()
+        public void TransitionToTiedInCombat()
         {
             _navigation.enabled = false;
             State = CharacterStates.TiedInCombat;

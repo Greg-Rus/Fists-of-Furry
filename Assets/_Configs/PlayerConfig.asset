@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
   AttackRange: 6
-  WalkingSpeed: 4
-  ChargingSpeed: 32
+  WalkingSpeed: 6
+  WalkingAcceleration: 100
+  ChargingSpeed: 30
+  ChargingAcceleration: 10000
   AttackAnimationSpeed: 3
   AttackWindDownAnimationSpeed: 1
   DefaultAnimationSpeed: 1
+  InstantChargeCompletion: 0
