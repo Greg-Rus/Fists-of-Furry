@@ -6,15 +6,12 @@ Shader "Shapes/Polyline 2D Multiplicative" {
 	}
 	SubShader {
 		Tags {
-			"RenderPipeline" = "UniversalPipeline"
 			"IgnoreProjector" = "True"
 			"Queue" = "Transparent"
 			"RenderType" = "Transparent"
 			"DisableBatching" = "True"
 		}
 		Pass {
-			Name "Pass"
-			Tags { "LightMode" = "UniversalForward" }
 			Cull Off
 			ZTest [_ZTest]
 			Offset [_ZOffsetFactor], [_ZOffsetUnits]
@@ -24,26 +21,6 @@ Shader "Shapes/Polyline 2D Multiplicative" {
 				#pragma vertex vert
 				#pragma fragment frag
 				#pragma multi_compile_instancing
-				#pragma prefer_hlslcc gles
-				#pragma exclude_renderers d3d11_9x
-				#pragma target 2.0
-				#pragma multi_compile __ IS_JOIN_MESH
-				#pragma multi_compile __ JOIN_MITER JOIN_ROUND JOIN_BEVEL
-				#define MULTIPLICATIVE
-				#include "../../Core/Polyline 2D Core.cginc"
-			ENDHLSL
-		}
-		Pass {
-			Name "DepthOnly"
-			Tags { "LightMode" = "DepthOnly" }
-			Cull Off
-			HLSLPROGRAM
-				#pragma vertex vert
-				#pragma fragment frag
-				#pragma multi_compile_instancing
-				#pragma prefer_hlslcc gles
-				#pragma exclude_renderers d3d11_9x
-				#pragma target 2.0
 				#pragma multi_compile __ IS_JOIN_MESH
 				#pragma multi_compile __ JOIN_MITER JOIN_ROUND JOIN_BEVEL
 				#define MULTIPLICATIVE
@@ -58,9 +35,6 @@ Shader "Shapes/Polyline 2D Multiplicative" {
 				#pragma vertex vert
 				#pragma fragment frag
 				#pragma multi_compile_instancing
-				#pragma prefer_hlslcc gles
-				#pragma exclude_renderers d3d11_9x
-				#pragma target 2.0
 				#pragma multi_compile __ IS_JOIN_MESH
 				#pragma multi_compile __ JOIN_MITER JOIN_ROUND JOIN_BEVEL
 				#define MULTIPLICATIVE
@@ -77,9 +51,6 @@ Shader "Shapes/Polyline 2D Multiplicative" {
 				#pragma vertex vert
 				#pragma fragment frag
 				#pragma multi_compile_instancing
-				#pragma prefer_hlslcc gles
-				#pragma exclude_renderers d3d11_9x
-				#pragma target 2.0
 				#pragma multi_compile __ IS_JOIN_MESH
 				#pragma multi_compile __ JOIN_MITER JOIN_ROUND JOIN_BEVEL
 				#define MULTIPLICATIVE

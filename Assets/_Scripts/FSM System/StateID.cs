@@ -9,10 +9,13 @@ public enum StateID
     FollowingAtDistance,
     Charging,
     TiedInCombat,
+    Attacking,
     Punching,
     Kicking,
     WindingDownFromAttack,
     GettingHit,
     Ragdolling,
-    Dead
+    Blocking,
+    Dead,
+    BlockedByWrongInput,
 }

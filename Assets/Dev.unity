@@ -319,12 +319,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &314995141 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5696533570792876141, guid: f64fdf97db5fa8946bbb2d27d25a8fdf,
+--- !u!114 &314995142 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -989995612787094393, guid: f64fdf97db5fa8946bbb2d27d25a8fdf,
     type: 3}
   m_PrefabInstance: {fileID: 98287684}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b63e0bd313a314baed28bbfdfd862f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &314995149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5700093672125015737, guid: f64fdf97db5fa8946bbb2d27d25a8fdf,
@@ -396,7 +402,7 @@ MonoBehaviour:
   _gameConfig: {fileID: 11400000, guid: bcfebdf2883f7d440b1db47bdb74cae3, type: 2}
   _prfabConfig: {fileID: 11400000, guid: 5387e5a53ce13094c8b54f50b9855bed, type: 2}
   _enemyCofnig: {fileID: 11400000, guid: cf75d2cc031c068469b470f19638e9f6, type: 2}
-  _player: {fileID: 314995141}
+  _playerController: {fileID: 314995142}
 --- !u!114 &374549586
 MonoBehaviour:
   m_ObjectHideFlags: 0

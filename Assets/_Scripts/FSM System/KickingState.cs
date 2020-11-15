@@ -2,13 +2,17 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class KickingState : AttackingState
+public class KickingState : PlayerAttackingState
 {
+    private readonly FSMSystem _fsm;
+    private readonly TargetSelector _targetSelector;
     private readonly AnimationController _animation;
 
     public KickingState(FSMSystem fsm, TargetSelector targetSelector, AnimationController animation, UserInput userInput, PlayerConfig playerConfig, NavMeshAgent navigation, Transform playerTransform) 
         : base(fsm, targetSelector, animation, userInput, playerConfig, navigation, playerTransform)
     {
+        _fsm = fsm;
+        _targetSelector = targetSelector;
         _animation = animation;
         stateID = StateID.Kicking;
     }
@@ -22,5 +26,8 @@ public class KickingState : AttackingState
         LastAttackSide = punchSide;
 
         _animation.StartKickAnimation(kickId, punchSide);
+        
+        var wasCorrectHitType = _targetSelector.EnemyCurrentlyInCombat.CheckIfHitTypeCorrect(HitTypes.Kick);
+        if(!wasCorrectHitType) _fsm.PerformTransition(Transition.ToBlockedByWrongInput);
     }
 }

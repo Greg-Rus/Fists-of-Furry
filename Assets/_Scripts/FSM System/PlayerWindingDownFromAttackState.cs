@@ -1,14 +1,14 @@
 ﻿using System;
 using _Scripts.FSM_System;
 
-public class WindingDownFromAttackState : FSMState
+public class PlayerWindingDownFromAttackState : FSMState
 {
     private FSMSystem _fsm;
     private readonly UserInput _userInput;
     private readonly TargetSelector _targetSelector;
     private readonly PlayerConfig _playerConfig;
     private readonly AnimationController _animation;
-    public WindingDownFromAttackState(FSMSystem fsm, TargetSelector targetSelector, UserInput userInput, AnimationController animation, PlayerConfig playerConfig)
+    public PlayerWindingDownFromAttackState(FSMSystem fsm, TargetSelector targetSelector, UserInput userInput, AnimationController animation, PlayerConfig playerConfig)
     {
         _fsm = fsm;
         _targetSelector = targetSelector;

@@ -41,6 +41,16 @@ public class AnimationController : MonoBehaviour
         set => _animator.SetFloat(AnimatorProperties.Charge, value ? 1f : 0f);
     }
 
+    public bool IsBlocking
+    {
+        set => _animator.SetBool(AnimatorProperties.Blocking, value);
+    }
+
+    public void PlayBlockRecoil()
+    {
+        _animator.SetTrigger(AnimatorProperties.BlockRecoil);
+    }
+
     public void StartPunchAnimation(int animationIndex, AttackSide attackSide)
     {
         _animator.SetInteger(AnimatorProperties.PunchNumber, animationIndex);

@@ -6,15 +6,12 @@ Shader "Shapes/Torus Opaque" {
 	}
 	SubShader {
 		Tags {
-			"RenderPipeline" = "UniversalPipeline"
 			"IgnoreProjector" = "True"
 			"Queue" = "AlphaTest"
 			"RenderType" = "TransparentCutout"
 			"DisableBatching" = "True"
 		}
 		Pass {
-			Name "Pass"
-			Tags { "LightMode" = "UniversalForward" }
 			Cull Off
 			ZTest [_ZTest]
 			Offset [_ZOffsetFactor], [_ZOffsetUnits]
@@ -23,24 +20,6 @@ Shader "Shapes/Torus Opaque" {
 				#pragma vertex vert
 				#pragma fragment frag
 				#pragma multi_compile_instancing
-				#pragma prefer_hlslcc gles
-				#pragma exclude_renderers d3d11_9x
-				#pragma target 2.0
-				#define OPAQUE
-				#include "../../Core/Torus Core.cginc"
-			ENDHLSL
-		}
-		Pass {
-			Name "DepthOnly"
-			Tags { "LightMode" = "DepthOnly" }
-			Cull Off
-			HLSLPROGRAM
-				#pragma vertex vert
-				#pragma fragment frag
-				#pragma multi_compile_instancing
-				#pragma prefer_hlslcc gles
-				#pragma exclude_renderers d3d11_9x
-				#pragma target 2.0
 				#define OPAQUE
 				#include "../../Core/Torus Core.cginc"
 			ENDHLSL
@@ -53,9 +32,6 @@ Shader "Shapes/Torus Opaque" {
 				#pragma vertex vert
 				#pragma fragment frag
 				#pragma multi_compile_instancing
-				#pragma prefer_hlslcc gles
-				#pragma exclude_renderers d3d11_9x
-				#pragma target 2.0
 				#define OPAQUE
 				#pragma instancing_options assumeuniformscaling nomatrices nolightprobe nolightmap
 				#define SCENE_VIEW_PICKING
@@ -70,9 +46,6 @@ Shader "Shapes/Torus Opaque" {
 				#pragma vertex vert
 				#pragma fragment frag
 				#pragma multi_compile_instancing
-				#pragma prefer_hlslcc gles
-				#pragma exclude_renderers d3d11_9x
-				#pragma target 2.0
 				#define OPAQUE
 				#pragma instancing_options assumeuniformscaling nomatrices nolightprobe nolightmap
 				#define SCENE_VIEW_OUTLINE_MASK

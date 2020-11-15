@@ -1,14 +1,14 @@
 ﻿using _Scripts.FSM_System;
 using UnityEngine.AI;
 
-public class TiedInCombatState : FSMState
+public class PlayerTiedInCombatState : FSMState
 {
     private FSMSystem _fsm;
     private UserInput _userInput;
     private TargetSelector _targetSelector;
     private readonly NavMeshAgent _navigation;
 
-    public TiedInCombatState(FSMSystem fsm, UserInput userInput, TargetSelector targetSelector, NavMeshAgent navigation)
+    public PlayerTiedInCombatState(FSMSystem fsm, UserInput userInput, TargetSelector targetSelector, NavMeshAgent navigation)
     {
         _fsm = fsm;
         _userInput = userInput;

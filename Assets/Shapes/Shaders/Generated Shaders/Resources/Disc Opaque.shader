@@ -6,15 +6,12 @@ Shader "Shapes/Disc Opaque" {
 	}
 	SubShader {
 		Tags {
-			"RenderPipeline" = "UniversalPipeline"
 			"IgnoreProjector" = "True"
 			"Queue" = "AlphaTest"
 			"RenderType" = "TransparentCutout"
 			"DisableBatching" = "True"
 		}
 		Pass {
-			Name "Pass"
-			Tags { "LightMode" = "UniversalForward" }
 			Cull Off
 			ZTest [_ZTest]
 			Offset [_ZOffsetFactor], [_ZOffsetUnits]
@@ -23,26 +20,6 @@ Shader "Shapes/Disc Opaque" {
 				#pragma vertex vert
 				#pragma fragment frag
 				#pragma multi_compile_instancing
-				#pragma prefer_hlslcc gles
-				#pragma exclude_renderers d3d11_9x
-				#pragma target 2.0
-				#pragma multi_compile __ INNER_RADIUS
-				#pragma multi_compile __ SECTOR
-				#define OPAQUE
-				#include "../../Core/Disc Core.cginc"
-			ENDHLSL
-		}
-		Pass {
-			Name "DepthOnly"
-			Tags { "LightMode" = "DepthOnly" }
-			Cull Off
-			HLSLPROGRAM
-				#pragma vertex vert
-				#pragma fragment frag
-				#pragma multi_compile_instancing
-				#pragma prefer_hlslcc gles
-				#pragma exclude_renderers d3d11_9x
-				#pragma target 2.0
 				#pragma multi_compile __ INNER_RADIUS
 				#pragma multi_compile __ SECTOR
 				#define OPAQUE
@@ -57,9 +34,6 @@ Shader "Shapes/Disc Opaque" {
 				#pragma vertex vert
 				#pragma fragment frag
 				#pragma multi_compile_instancing
-				#pragma prefer_hlslcc gles
-				#pragma exclude_renderers d3d11_9x
-				#pragma target 2.0
 				#pragma multi_compile __ INNER_RADIUS
 				#pragma multi_compile __ SECTOR
 				#define OPAQUE
@@ -76,9 +50,6 @@ Shader "Shapes/Disc Opaque" {
 				#pragma vertex vert
 				#pragma fragment frag
 				#pragma multi_compile_instancing
-				#pragma prefer_hlslcc gles
-				#pragma exclude_renderers d3d11_9x
-				#pragma target 2.0
 				#pragma multi_compile __ INNER_RADIUS
 				#pragma multi_compile __ SECTOR
 				#define OPAQUE

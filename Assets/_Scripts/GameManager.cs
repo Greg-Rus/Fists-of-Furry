@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameConfig _gameConfig;
     [SerializeField] private PrefabConfig _prfabConfig;
     [SerializeField] private EnemyConfig _enemyCofnig;
-    [SerializeField] private GameObject _player;
+    [SerializeField] private PlayerController _playerController;
 #pragma warning restore 649
 
     private Dictionary<Transform, EnemyController> _enemies;
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     private float _enemySpawnTimer = 0f;
 
     public Dictionary<Transform, EnemyController> Enemies => _enemies;
-    public Vector3 PlayerPosition => _player.transform.position;
+    public Vector3 PlayerPosition => _playerController.transform.position;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         var enemy = Instantiate(_prfabConfig.EnemyPrefab, GetEnemySpawnPosition(), Quaternion.identity);
         var enemyController = enemy.GetComponent<EnemyController>();
-        enemyController.Setup(_enemyCofnig, _player.transform, GetHitOrder(GetEnemyHp()));
+        enemyController.Setup(_enemyCofnig, _playerController, GetHitOrder(GetEnemyHp()));
         Enemies.Add(enemy.transform, enemyController);
     }
 
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
     {
         var randomInCircle = UnityEngine.Random.insideUnitCircle.normalized;
         var offset = new Vector3(randomInCircle.x, 0f, randomInCircle.y) * _gameConfig.EnemySpawnRadius;
-        return _player.transform.position + offset;
+        return _playerController.transform.position + offset;
     }
 
     private int GetEnemyHp()

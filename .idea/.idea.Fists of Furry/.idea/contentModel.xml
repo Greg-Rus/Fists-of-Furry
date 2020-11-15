@@ -21,23 +21,33 @@
             <e p="PlayerConfig.cs" t="Include" />
             <e p="prefabConfig.cs" t="Include" />
           </e>
-          <e p="EnemyAI.cs" t="Include" />
+          <e p="DepricatedEnemyAI.cs" t="Include" />
           <e p="EnemyController.cs" t="Include" />
           <e p="FSM System" t="Include">
-            <e p="AttackingState.cs" t="Include" />
-            <e p="ChargingState.cs" t="Include" />
+            <e p="EnemyAttackingState.cs" t="Include" />
+            <e p="EnemyBlockingState.cs" t="Include" />
+            <e p="EnemyDeadState.cs" t="Include" />
+            <e p="EnemyFollowAtDistanceState.cs" t="Include" />
+            <e p="EnemyGettingHitState.cs" t="Include" />
+            <e p="EnemyRagdollingState.cs" t="Include" />
+            <e p="EnemyTiedInCombat.cs" t="Include" />
             <e p="FSMSystem.cs" t="Include" />
             <e p="KickingState.cs" t="Include" />
+            <e p="NullState.cs" t="Include" />
+            <e p="PlayerAttackingState.cs" t="Include" />
+            <e p="PlayerBlockedByWrongInputState.cs" t="Include" />
+            <e p="PlayerChargingState.cs" t="Include" />
+            <e p="PlayerTiedInCombatState.cs" t="Include" />
+            <e p="PlayerWalkingState.cs" t="Include" />
+            <e p="PlayerWindingDownFromAttackState.cs" t="Include" />
             <e p="PunchingState.cs" t="Include" />
             <e p="StateID.cs" t="Include" />
-            <e p="TiedInCombatState.cs" t="Include" />
             <e p="Transition.cs" t="Include" />
-            <e p="WalkingState.cs" t="Include" />
-            <e p="WindingDownFromAttackState.cs" t="Include" />
           </e>
           <e p="GameManager.cs" t="Include" />
           <e p="Helpers.cs" t="Include" />
           <e p="HitRecoilBehaviour.cs" t="Include" />
+          <e p="LookAtCamera.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="RagdollController.cs" t="Include" />
           <e p="TargetSelector.cs" t="Include" />

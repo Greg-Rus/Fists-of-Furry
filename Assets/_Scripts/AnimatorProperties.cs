@@ -12,4 +12,6 @@ public static class AnimatorProperties
     public static readonly int KickTrigger = Animator.StringToHash("Kick Trigger");
     public static readonly int GetHitTrigger = Animator.StringToHash("Get Hit Trigger");
     public static readonly int HitDirection = Animator.StringToHash("Hit Direction");
+    public static readonly int Blocking = Animator.StringToHash("Blocking");
+    public static readonly int BlockRecoil = Animator.StringToHash("Block Recoil");
 }

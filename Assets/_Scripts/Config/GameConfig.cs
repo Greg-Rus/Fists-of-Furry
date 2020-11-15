@@ -7,4 +7,5 @@ public class GameConfig : ScriptableObject
     public LayerMask EnemyLayers;
     public float EnemySpawnSpeed;
     public float EnemySpawnRadius;
+    public float MinimumMousePositionDelta;
 }

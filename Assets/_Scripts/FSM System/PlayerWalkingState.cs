@@ -4,21 +4,7 @@ using _Scripts.FSM_System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NullState : FSMState
-{
-    
-    public override void Reason()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void Act()
-    {
-        throw new System.NotImplementedException();
-    }
-}
-
-public class WalkingState : FSMState
+public class PlayerWalkingState : FSMState
 {
     private NavMeshAgent _navigation;
     private UserInput _userInput;
@@ -27,7 +13,7 @@ public class WalkingState : FSMState
     private PlayerConfig _playerConfig;
     private readonly AnimationController _animation;
 
-    public WalkingState(FSMSystem fsm, NavMeshAgent navigation, UserInput userInput, TargetSelector targetSelector, PlayerConfig playerConfig, AnimationController animation)
+    public PlayerWalkingState(FSMSystem fsm, NavMeshAgent navigation, UserInput userInput, TargetSelector targetSelector, PlayerConfig playerConfig, AnimationController animation)
     {
         _navigation = navigation;
         _userInput = userInput;

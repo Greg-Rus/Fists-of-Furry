@@ -6,15 +6,12 @@ Shader "Shapes/Line 2D Opaque" {
 	}
 	SubShader {
 		Tags {
-			"RenderPipeline" = "UniversalPipeline"
 			"IgnoreProjector" = "True"
 			"Queue" = "AlphaTest"
 			"RenderType" = "TransparentCutout"
 			"DisableBatching" = "True"
 		}
 		Pass {
-			Name "Pass"
-			Tags { "LightMode" = "UniversalForward" }
 			Cull Off
 			ZTest [_ZTest]
 			Offset [_ZOffsetFactor], [_ZOffsetUnits]
@@ -23,25 +20,6 @@ Shader "Shapes/Line 2D Opaque" {
 				#pragma vertex vert
 				#pragma fragment frag
 				#pragma multi_compile_instancing
-				#pragma prefer_hlslcc gles
-				#pragma exclude_renderers d3d11_9x
-				#pragma target 2.0
-				#pragma multi_compile __ CAP_ROUND CAP_SQUARE
-				#define OPAQUE
-				#include "../../Core/Line 2D Core.cginc"
-			ENDHLSL
-		}
-		Pass {
-			Name "DepthOnly"
-			Tags { "LightMode" = "DepthOnly" }
-			Cull Off
-			HLSLPROGRAM
-				#pragma vertex vert
-				#pragma fragment frag
-				#pragma multi_compile_instancing
-				#pragma prefer_hlslcc gles
-				#pragma exclude_renderers d3d11_9x
-				#pragma target 2.0
 				#pragma multi_compile __ CAP_ROUND CAP_SQUARE
 				#define OPAQUE
 				#include "../../Core/Line 2D Core.cginc"
@@ -55,9 +33,6 @@ Shader "Shapes/Line 2D Opaque" {
 				#pragma vertex vert
 				#pragma fragment frag
 				#pragma multi_compile_instancing
-				#pragma prefer_hlslcc gles
-				#pragma exclude_renderers d3d11_9x
-				#pragma target 2.0
 				#pragma multi_compile __ CAP_ROUND CAP_SQUARE
 				#define OPAQUE
 				#pragma instancing_options assumeuniformscaling nomatrices nolightprobe nolightmap
@@ -73,9 +48,6 @@ Shader "Shapes/Line 2D Opaque" {
 				#pragma vertex vert
 				#pragma fragment frag
 				#pragma multi_compile_instancing
-				#pragma prefer_hlslcc gles
-				#pragma exclude_renderers d3d11_9x
-				#pragma target 2.0
 				#pragma multi_compile __ CAP_ROUND CAP_SQUARE
 				#define OPAQUE
 				#pragma instancing_options assumeuniformscaling nomatrices nolightprobe nolightmap

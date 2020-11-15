@@ -3,7 +3,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ChargingState : FSMState
+public class PlayerChargingState : FSMState
 {
     private FSMSystem _fsm;
     private readonly NavMeshAgent _navigation;
@@ -14,7 +14,7 @@ public class ChargingState : FSMState
     private readonly Transform _playerTransform;
     private bool _pathSet;
 
-    public ChargingState(FSMSystem fsm, NavMeshAgent navigation, PlayerController controller, PlayerConfig playerConfig, 
+    public PlayerChargingState(FSMSystem fsm, NavMeshAgent navigation, PlayerController controller, PlayerConfig playerConfig, 
         AnimationController animation, TargetSelector targetSelector, Transform playerTransform)
     {
         _fsm = fsm;
@@ -48,7 +48,7 @@ public class ChargingState : FSMState
         _animation.IsCharging = true;
         _animation.ApplyRootMotion = false;
         _targetSelector.EnemyCurrentlyInCombat = _targetSelector.SelectedTarget;
-        _targetSelector.EnemyCurrentlyInCombat.AI.TransitionToTiedInCombat();
+        _targetSelector.EnemyCurrentlyInCombat.TieInCombat();
         
         if(_playerConfig.InstantChargeCompletion) _fsm.PerformTransition(Transition.ToTiedInCombat);
     }

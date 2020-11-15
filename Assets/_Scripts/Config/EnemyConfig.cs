@@ -10,6 +10,9 @@ public class EnemyConfig : ScriptableObject
     public float RagdollUpwardsModifier;
     public float DestroyTimer;
     public HpProbabilityMapping[] HpProbabilityMappings;
+    public float AttackAnimationSpeed;
+    public float AttackWindDownAnimationSpeed;
+    public float DefaultAnimationSpeed;
 }
 
 [Serializable]

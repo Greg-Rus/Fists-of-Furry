@@ -29,7 +29,15 @@ public class TargetSelector : MonoBehaviour
     public EnemyController EnemyCurrentlyInCombat
     {
         get => _enemyCurrentlyInCombat;
-        set => _enemyCurrentlyInCombat = value;
+        set
+        {
+            _enemyCurrentlyInCombat = value;
+            _enemyCurrentlyInCombat.OnDied = () =>
+            {
+                if (_selectedTarget == _enemyCurrentlyInCombat) _selectedTarget = null;
+                _enemyCurrentlyInCombat = null;
+            };
+        }
     }
 
     // Update is called once per frame
@@ -50,6 +58,7 @@ public class TargetSelector : MonoBehaviour
         }
         
         var closestEnemy = collidersInRange
+            .Where(collider => !_gameManager.Enemies[collider.transform.root].IsDead)
             .OrderBy(c => (c.transform.position - position).sqrMagnitude)
             .FirstOrDefault();
         SelectTarget(closestEnemy.transform.root);

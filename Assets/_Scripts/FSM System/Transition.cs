@@ -53,11 +53,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
         ToFollowingAtDistance,
         ToCharging,
         ToTiedInCombat,
-        ToPunching,
-        ToKicking,
+        ToAttacking, //Used by enemies
+        ToPunching, //USed by player
+        ToKicking, //User by player
         ToWindingDownFromAttack,
         ToGettingHit,
         ToRagdolling,
-        ToDead
+        ToBlocking,
+        ToDead,
+        ToBlockedByWrongInput
     }
 }

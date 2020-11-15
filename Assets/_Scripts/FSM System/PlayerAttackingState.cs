@@ -1,9 +1,8 @@
-﻿using System;
-using _Scripts.FSM_System;
+﻿using _Scripts.FSM_System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AttackingState : FSMState
+public class PlayerAttackingState : FSMState
 {
     private FSMSystem _fsm;
     private readonly UserInput _userInput;
@@ -15,7 +14,7 @@ public class AttackingState : FSMState
 
     protected AttackSide LastAttackSide = AttackSide.Left;
 
-    public AttackingState(FSMSystem fsm, TargetSelector targetSelector, AnimationController animation,
+    public PlayerAttackingState(FSMSystem fsm, TargetSelector targetSelector, AnimationController animation,
         UserInput userInput, PlayerConfig playerConfig, NavMeshAgent navigation, Transform playerTransform)
     {
         _fsm = fsm;
@@ -25,6 +24,7 @@ public class AttackingState : FSMState
         _playerConfig = playerConfig;
         _navigation = navigation;
         _playerTransform = playerTransform;
+        //stateID = set by inheritor;
     }
 
     public override void Reason()
@@ -39,7 +39,7 @@ public class AttackingState : FSMState
 
     public override void DoBeforeEntering()
     {
-        _targetSelector.EnemyCurrentlyInCombat.AI.OnUnderAttack();
+        _targetSelector.EnemyCurrentlyInCombat.TieInCombat();
         _animation.AnimationSpeed = _playerConfig.AttackAnimationSpeed;
         _animation.ApplyRootMotion = true;
         SnapToTargetEnemy();
@@ -49,9 +49,8 @@ public class AttackingState : FSMState
     
     private void SnapToTargetEnemy()
     {
-        var enemyPosition = _targetSelector.EnemyCurrentlyInCombat.transform.position;
-        var directionToPlayer = _playerTransform.position - enemyPosition;
-        var desiredPlayerPosition = directionToPlayer.normalized;
-        _navigation.Warp(enemyPosition + desiredPlayerPosition);
+        var snappedPosition = Helpers.SnapPositionToUnitFromTarget(_playerTransform.position,
+            _targetSelector.EnemyCurrentlyInCombat.transform.position);
+        _navigation.Warp(snappedPosition);
     }
 }

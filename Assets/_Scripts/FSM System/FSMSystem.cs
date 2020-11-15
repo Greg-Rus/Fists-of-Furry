@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 
 namespace _Scripts.FSM_System
@@ -122,14 +123,16 @@ namespace _Scripts.FSM_System
  
         // The only way one can change the state of the FSM is by performing a transition
         // Don't change the CurrentState directly
-        private StateID currentStateID;
-        public StateID CurrentStateID { get { return currentStateID; } }
+        private ReactiveProperty<StateID> currentStateID;
+        public ReactiveProperty<StateID> CurrentStateIdRx => currentStateID;
+        public StateID CurrentStateID { get { return currentStateID.Value; } }
         private FSMState currentState;
         public FSMState CurrentState { get { return currentState; } }
  
         public FSMSystem()
         {
             states = new List<FSMState>();
+            currentStateID = new ReactiveProperty<StateID>();
         }
  
         /// <summary>
@@ -151,7 +154,7 @@ namespace _Scripts.FSM_System
             {
                 states.Add(s);
                 currentState = s;
-                currentStateID = s.ID;
+                currentStateID.Value = s.ID;
                 return;
             }
  
@@ -219,10 +222,10 @@ namespace _Scripts.FSM_System
             }
  
             // Update the currentStateID and currentState		
-            currentStateID = id;
+            currentStateID.Value = id;
             foreach (FSMState state in states)
             {
-                if (state.ID == currentStateID)
+                if (state.ID == currentStateID.Value)
                 {
                     // Do the post processing of the state before setting the new one
                     currentState.DoBeforeLeaving();

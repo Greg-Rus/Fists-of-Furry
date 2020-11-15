@@ -24,3 +24,6 @@ MonoBehaviour:
     Range: 0.9
   - Hp: 3
     Range: 1
+  AttackAnimationSpeed: 1
+  AttackWindDownAnimationSpeed: 1
+  DefaultAnimationSpeed: 1

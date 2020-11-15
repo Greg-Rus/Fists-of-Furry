@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public static class Helpers
 {
@@ -17,5 +18,18 @@ public static class Helpers
     public static float Sqrd(this float f)
     {
         return f * f;
+    }
+
+    public static Vector3 SnapPositionToUnitFromTarget(Vector3 ownPosition, Vector3 targetPosition)
+    {
+        var directionFromTargetToSelf = ownPosition - targetPosition;
+        return targetPosition + directionFromTargetToSelf.normalized;
+    }
+
+    public static Color WithAlpha(this Color color, float alpha)
+    {
+        if(alpha < 0 || alpha > 1) throw new ArgumentException("Alpha must be 0-1");
+        
+        return new Color(color.r, color.g, color.b, alpha);
     }
 }

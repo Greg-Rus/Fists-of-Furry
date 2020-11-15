@@ -20,3 +20,4 @@ MonoBehaviour:
     m_Bits: 256
   EnemySpawnSpeed: 1
   EnemySpawnRadius: 8
+  MinimumMousePositionDelta: 0.5
