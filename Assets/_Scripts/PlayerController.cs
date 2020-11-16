@@ -99,11 +99,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnAttackCompetedCallback()
     {
-        // if (_targetSelector.EnemyCurrentlyInCombat == null)
-        // {
-        //     _fsm.PerformTransition(Transition.ToWalking);
-        // }
-        // else 
+        if (_targetSelector.EnemyCurrentlyInCombat == null && 
+            _fsm.CurrentStateID == StateID.WindingDownFromAttack)
+        {
+            _fsm.PerformTransition(Transition.ToWalking);
+        }
+        else 
         if(_fsm.CurrentStateID == StateID.WindingDownFromAttack)
         {
             _fsm.PerformTransition(Transition.ToTiedInCombat);
@@ -114,11 +115,11 @@ public class PlayerController : MonoBehaviour
     {
         var hitType = _fsm.CurrentStateID == StateID.Punching ? HitTypes.Punch : HitTypes.Kick;
         _targetSelector.EnemyCurrentlyInCombat.OnHitConnect(hitType);
-        if (_targetSelector.EnemyCurrentlyInCombat.State == StateID.Ragdolling ||
-            _targetSelector.EnemyCurrentlyInCombat.State == StateID.Dead)
-        {
-            _targetSelector.EnemyCurrentlyInCombat = null;
-        }
+        // if (_targetSelector.EnemyCurrentlyInCombat.State == StateID.Ragdolling ||
+        //     _targetSelector.EnemyCurrentlyInCombat.State == StateID.Dead)
+        // {
+        //     _targetSelector.EnemyCurrentlyInCombat = null;
+        // }
 
         if (_fsm.CurrentStateID != StateID.BlockedByWrongInput)
         {

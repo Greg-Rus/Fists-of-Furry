@@ -35,6 +35,7 @@ public class TargetSelector : MonoBehaviour
             _enemyCurrentlyInCombat.OnDied = () =>
             {
                 if (_selectedTarget == _enemyCurrentlyInCombat) _selectedTarget = null;
+                _enemyCurrentlyInCombat.OnDied = null;
                 _enemyCurrentlyInCombat = null;
             };
         }
